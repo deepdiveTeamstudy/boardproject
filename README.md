@@ -16,8 +16,6 @@
 - GitHub Flow 기반 브랜치 전략 사용 (`main`, `feature/*`)
 - 기능 단위 커밋 (`feat`, `fix`, `docs` 등 Conventional Commits 사용)
 - PR 리뷰 및 코드리뷰 필수
-- 주간 회의 및 역할 분담 기록 공유
-- 공통 코드 컨벤션 준수 (`Google Java Style`, `Lombok 사용 허용`)
 
 ## 🗒️ 요구사항 분석
 
@@ -50,3 +48,5 @@
 ## 🧪 API 문서 (Swagger)
 
 ## 📊 ERD
+<img width="791" alt="erd" src="https://github.com/user-attachments/assets/a75dac34-d167-4494-adcf-357d23cbe339" />
+
