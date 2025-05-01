@@ -1,0 +1,44 @@
+name: Bug Report
+description: 버그 발생 시 작성하는 이슈 템플릿
+title: "[Bug]: 버그 제목을 작성해주세요"
+labels: ["bug"]
+
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 어떤 버그인가요?
+      description: 어떤 버그인지 간결하게 설명해주세요.
+      placeholder: ex. 로그인 버튼이 작동하지 않음
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-scenario
+    attributes:
+      label: 어떤 상황에서 발생한 버그인가요?
+      description: 가능하면 Given-When-Then 형식으로 서술해주세요.
+      value: |
+        **Given**: 로그인한 상태에서 메인 화면에 진입했을 때  
+        **When**: 하단의 '내 정보' 버튼을 클릭하면  
+        **Then**: 페이지가 이동하지 않고 콘솔에 오류가 발생함
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 예상 결과
+      description: 기대했던 정상 동작이 무엇이었는지 작성해주세요.
+      placeholder: ex. 클릭 시 /mypage 경로로 이동해야 함
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: 참고할만한 자료(선택)
+      description: 참고한 링크, 캡처, 로그, 관련 커밋 등
+      placeholder: ex. https://github.com/example/repo/issues/123
+    validations:
+      required: false
