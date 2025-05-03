@@ -36,4 +36,21 @@ public class PostController {
                     .body("게시글 등록 실패 : " + e.getMessage());
         }
     }
+
+    // 게시글 삭제
+    @DeleteMapping("/posts/{postNo}")
+    public ResponseEntity<?> removePost(@PathVariable int postNo) {
+
+        try {
+            postService.removePost(postNo);
+
+            return ResponseEntity.ok("게시글 삭제 성공");
+
+        } catch (Exception e) {
+            log.error("error : " + e);
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("게시글 삭제 실패 : " + e.getMessage());
+        }
+    }
 }

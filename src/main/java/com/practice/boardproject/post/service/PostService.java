@@ -41,4 +41,14 @@ public class PostService {
         postRepository.save(createPost);
     }
 
+    // 게시글 삭제
+    @Transactional
+    public void removePost(int postNo) {
+
+        Post foundPost = postRepository.findById((long) postNo)
+                .orElseThrow(() -> new EntityNotFoundException("게시글을 찾을 수 없습니다."));
+
+        postRepository.delete(foundPost);
+    }
+
 }
