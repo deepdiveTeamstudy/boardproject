@@ -53,4 +53,20 @@ public class PostController {
                     .body("게시글 삭제 실패 : " + e.getMessage());
         }
     }
+
+    // 게시글 수정
+    @PutMapping("/posts/{postNo}")
+    public ResponseEntity<?> modifyPost(@PathVariable int postNo, @RequestBody PostDTO postDTO) {
+
+        try {
+            postService.modifyPost(postNo, postDTO);
+
+            return ResponseEntity.ok("게시글 수정 성공");
+        } catch (Exception e) {
+            log.error("error : " + e);
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("게시글 수정 실패 : " + e.getMessage());
+        }
+    }
 }
