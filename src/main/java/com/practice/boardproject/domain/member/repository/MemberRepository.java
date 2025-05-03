@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
   boolean existsMemberByUsername(String username);
+
+  Optional<Member> findMemberByUsername(String username);
 }
