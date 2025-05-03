@@ -1,0 +1,39 @@
+package com.practice.boardproject.post.controller;
+
+import com.practice.boardproject.post.dto.PostDTO;
+import com.practice.boardproject.post.service.PostService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
+@Slf4j
+@RestController
+public class PostController {
+
+    private final PostService postService;
+
+    @Autowired
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
+
+    // 게시글 등록
+    @PostMapping("/posts")
+    public ResponseEntity<?> registPost(@RequestBody PostDTO newPost) {
+
+        try {
+            postService.registPost(newPost);
+
+            return ResponseEntity.ok("게시글 등록 성공");
+
+        } catch (Exception e) {
+            log.error("error : " + e);
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("게시글 등록 실패 : " + e.getMessage());
+        }
+    }
+}
