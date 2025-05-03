@@ -1,4 +1,4 @@
-package com.practice.boardproject.config;
+package com.practice.boardproject.global.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
