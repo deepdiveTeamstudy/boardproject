@@ -1,6 +1,7 @@
 package com.practice.boardproject.post.controller;
 
 import com.practice.boardproject.post.dto.PostDTO;
+import com.practice.boardproject.post.dto.PostDetailDTO;
 import com.practice.boardproject.post.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,13 @@ public class PostController {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("게시글 수정 실패 : " + e.getMessage());
         }
+    }
+
+    // 게시글 상세 조회
+    @GetMapping("/posts/{postNo}")
+    public ResponseEntity<PostDetailDTO> getPostDetail(@PathVariable int postNo) {
+
+        PostDetailDTO postDetail = postService.getPostDetail(postNo);
+        return ResponseEntity.ok(postDetail);
     }
 }
