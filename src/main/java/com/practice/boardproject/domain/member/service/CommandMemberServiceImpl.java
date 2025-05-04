@@ -16,7 +16,6 @@ public class CommandMemberServiceImpl implements CommandMemberService {
 
   private final MemberRepository memberRepository;
 
-  @Override
   public void createMember(CreateMemberRequest request) {
     if (memberRepository.existsMemberByUsername(request.username())) {
       throw new GlobalException(ErrorStatus.BAD_REQUEST, "이미 사용 중인 ID입니다.");

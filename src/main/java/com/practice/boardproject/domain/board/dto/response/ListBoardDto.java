@@ -20,8 +20,8 @@ public class ListBoardDto {
   @Schema(description = "제목")
   private String title;
 
-  @Schema(description = "작성자")
-  private String author;
+  @Schema(description = "작성자 ID")
+  private String username;
 
   @Schema(description = "작성일")
   private LocalDateTime createdAt;

@@ -21,7 +21,6 @@ public class CommandBoardServiceImpl implements CommandBoardService {
   private final MemberRepository memberRepository;
   private final BoardRepository boardRepository;
 
-  @Override
   public void createBoard(CreateBoardRequest request) {
     Member author = memberRepository.findMemberByUsername(request.username())
       .orElseThrow(() -> new GlobalException(ErrorStatus.NOT_FOUND, "존재하지 않는 사용자입니다."));
@@ -35,24 +34,22 @@ public class CommandBoardServiceImpl implements CommandBoardService {
     );
   }
 
-  @Override
   public void updateBoard(long boardId, UpdateBoardRequest request) {
     Board board = validate(boardId, request.password());
     board.update(request.title(), request.content());
   }
 
-  @Override
   public void deleteBoard(long boardId, DeleteBoardRequest request) {
     Board board = validate(boardId, request.password());
     boardRepository.delete(board);
   }
 
 
-  private Board validate(long boardId, String request) {
+  private Board validate(long boardId, String password) {
     Board board = boardRepository.findById(boardId)
       .orElseThrow(() -> new GlobalException(ErrorStatus.NOT_FOUND, "존재하지 않는 게시글입니다."));
-    if (!board.getAuthor().getPassword().equals(request)) {
-      throw new GlobalException(ErrorStatus.BAD_REQUEST, "타인의 글은 수정/삭제할 수 없습니다.");
+    if (!board.getAuthor().getPassword().equals(password)) {
+      throw new GlobalException(ErrorStatus.BAD_REQUEST, "비밀번호가 올바르지 않습니다.");
     }
     return board;
   }

@@ -35,7 +35,6 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     return handleExceptionInternalConstraint(e, ErrorStatus.valueOf(errorMessage), request);
   }
 
-  @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException e, HttpHeaders headers, HttpStatusCode status,
     WebRequest request) {
 

@@ -22,7 +22,6 @@ public class ReadBoardServiceImpl implements ReadBoardService {
   private final ListBoardRepository listBoardRepository;
   private final DetailBoardRepository detailBoardRepository;
 
-  @Override
   public ListBoardResponse getBoardList(SearchBoardRequest request) {
     Page<ListBoardDto> boardList = listBoardRepository.getBoardList(request);
 
@@ -32,7 +31,6 @@ public class ReadBoardServiceImpl implements ReadBoardService {
       .build();
   }
 
-  @Override
   public DetailBoardResponse getBoard(Long boardId) {
     return Optional.ofNullable(detailBoardRepository.getBoard(boardId))
       .orElseThrow(() -> new GlobalException(ErrorStatus.NOT_FOUND, "존재하지 않는 게시글입니다."));

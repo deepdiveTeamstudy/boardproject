@@ -1,4 +1,4 @@
-package com.practice.boardproject.domain.board.dto.response;
+package com.practice.boardproject.domain.comment.controller.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
@@ -7,17 +7,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder(toBuilder = true)
+@Builder
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "게시글 상세 조회 응답 객체")
-public class DetailBoardResponse {
+@AllArgsConstructor
+@Schema(description = "게시글 댓글 목록 조회 응답 객체")
+public class ListCommentDto {
 
-    @Schema(description = "게시글 제목")
-    private String title;
+    @Schema(description = "댓글 ID")
+    private long commentId;
 
-    @Schema(description = "게시글 내용")
+    @Schema(description = "내용")
     private String content;
 
     @Schema(description = "작성자 ID")

@@ -1,6 +1,7 @@
 package com.practice.boardproject.domain.board;
 
 import com.practice.boardproject.domain.member.Member;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -11,7 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +48,9 @@ public class Board {
     @JoinColumn(name = "author_id", nullable = false)
     private Member author;
 
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<com.practice.boardproject.domain.comment.Comment> commentList = new ArrayList<>();
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
@@ -62,4 +69,5 @@ public class Board {
         this.title = title;
         this.content = content;
     }
+
 }

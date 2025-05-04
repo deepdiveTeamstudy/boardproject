@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer {
 
-  @Override
   public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
     ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
       .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)

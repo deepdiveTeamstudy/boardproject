@@ -30,7 +30,7 @@ public class ListBoardRepository {
             ListBoardDto.class,
             board.id.as("boardId"),
             board.title,
-            board.author.username.as("author"),
+            board.author.username,
             board.createdAt
           )
         )

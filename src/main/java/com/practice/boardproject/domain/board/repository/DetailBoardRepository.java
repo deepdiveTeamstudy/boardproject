@@ -19,7 +19,7 @@ public class DetailBoardRepository {
         DetailBoardResponse.class,
         board.title,
         board.content,
-        board.author.username.as("author"),
+        board.author.username,
         board.createdAt
       ))
       .from(board)

@@ -54,13 +54,17 @@ public class Comment {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Comment(String content, Board board, Member author) {
+    public Comment(String content, Member author) {
         this.content = content;
-        this.board = board;
         this.author = author;
     }
 
     public void update(String content) {
         this.content = content;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+        board.getCommentList().add(this);
     }
 }
