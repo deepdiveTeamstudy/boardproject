@@ -1,9 +1,9 @@
 package com.practice.boardproject.domain.comment.service;
 
 
-import com.practice.boardproject.domain.comment.controller.request.CreateCommentRequest;
-import com.practice.boardproject.domain.comment.controller.request.DeleteCommentRequest;
-import com.practice.boardproject.domain.comment.controller.request.UpdateCommentRequest;
+import com.practice.boardproject.domain.comment.dto.request.CreateCommentRequest;
+import com.practice.boardproject.domain.comment.dto.request.DeleteCommentRequest;
+import com.practice.boardproject.domain.comment.dto.request.UpdateCommentRequest;
 
 public interface CommandCommentService {
 

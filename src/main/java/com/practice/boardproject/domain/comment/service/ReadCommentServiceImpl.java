@@ -1,6 +1,6 @@
 package com.practice.boardproject.domain.comment.service;
 
-import com.practice.boardproject.domain.comment.controller.response.ListCommentResponse;
+import com.practice.boardproject.domain.comment.dto.response.ListCommentResponse;
 import com.practice.boardproject.domain.comment.repository.ListCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

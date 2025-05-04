@@ -1,9 +1,9 @@
 package com.practice.boardproject.domain.comment.controller;
 
-import com.practice.boardproject.domain.comment.controller.request.CreateCommentRequest;
-import com.practice.boardproject.domain.comment.controller.request.DeleteCommentRequest;
-import com.practice.boardproject.domain.comment.controller.request.UpdateCommentRequest;
-import com.practice.boardproject.domain.comment.controller.response.ListCommentResponse;
+import com.practice.boardproject.domain.comment.dto.request.CreateCommentRequest;
+import com.practice.boardproject.domain.comment.dto.request.DeleteCommentRequest;
+import com.practice.boardproject.domain.comment.dto.request.UpdateCommentRequest;
+import com.practice.boardproject.domain.comment.dto.response.ListCommentResponse;
 import com.practice.boardproject.domain.comment.service.CommandCommentService;
 import com.practice.boardproject.domain.comment.service.ReadCommentService;
 import com.practice.boardproject.global.api_response.ApiResponse;

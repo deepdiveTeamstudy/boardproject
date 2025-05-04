@@ -1,4 +1,4 @@
-package com.practice.boardproject.domain.comment.controller.response;
+package com.practice.boardproject.domain.comment.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
