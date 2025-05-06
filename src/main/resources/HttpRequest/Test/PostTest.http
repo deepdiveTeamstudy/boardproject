@@ -1,0 +1,28 @@
+### POST Create a new post
+POST http://localhost:8080/api/post
+Content-Type: application/json
+
+{
+  "title": "New Post 2",
+  "content": "Second post",
+  "username": "user02"
+}
+
+### GET all posts
+GET http://localhost:8080/api/post
+
+### GET a post
+GET http://localhost:8080/api/post/1
+
+### PUT a post
+PUT http://localhost:8080/api/post/1
+Content-Type: application/json
+
+{
+  "title": "Updated Post Title",
+  "content": "Updated First Post",
+  "username": "user01"
+}
+
+### DELETE a post
+DELETE http://localhost:8080/api/post/1
