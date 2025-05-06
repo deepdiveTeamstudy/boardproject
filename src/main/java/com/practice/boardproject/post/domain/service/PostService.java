@@ -11,7 +11,7 @@ import com.practice.boardproject.post.domain.dto.PostDetailResponse;
 import com.practice.boardproject.post.domain.dto.PostUpdateRequest;
 import com.practice.boardproject.post.domain.dto.PostUpdateResponse;
 import com.practice.boardproject.post.domain.exception.NotFoundPostException;
-import com.practice.boardproject.post.domain.exception.NotFoundUserException;
+import com.practice.boardproject.member.error.NotFoundUserException;
 import com.practice.boardproject.post.domain.repository.PostRepository;
 import java.util.List;
 import java.util.stream.Collectors;

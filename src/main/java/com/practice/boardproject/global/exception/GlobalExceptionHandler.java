@@ -1,7 +1,7 @@
 package com.practice.boardproject.global.exception;
 
 import com.practice.boardproject.post.domain.exception.NotFoundPostException;
-import com.practice.boardproject.post.domain.exception.NotFoundUserException;
+import com.practice.boardproject.member.error.NotFoundUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
