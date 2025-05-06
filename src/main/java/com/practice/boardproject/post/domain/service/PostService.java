@@ -23,7 +23,9 @@ public class PostService {
     public PostCreateResponse createPost(PostCreateRequest request) {
         Member author = memberRepository.findByUsername(request.username())
                 .orElseThrow(() -> new NotFoundUserException(request.username()));
+
         Post savedPost = Post.create(request.title(), request.content(), author);
+
         return new PostCreateResponse(
                 savedPost.getTitle(),
                 savedPost.getContent(),
@@ -37,11 +39,19 @@ public class PostService {
 
         post.update(request.title(), request.content());
         Post updatedPost = postRepository.save(post);
+
         return new PostUpdateResponse(
                 updatedPost.getTitle(),
                 updatedPost.getContent(),
                 updatedPost.getAuthor().getUsername(),
                 updatedPost.getUpdatedAt()
         );
+    }
+    
+    public void deletePost(Long postId) {
+        postRepository.findById(postId)
+                .orElseThrow(() -> new NotFoundPostException(postId));
+
+        postRepository.deleteById(postId);
     }
 }
