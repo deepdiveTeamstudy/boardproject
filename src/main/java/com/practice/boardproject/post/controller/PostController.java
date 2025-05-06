@@ -1,13 +1,20 @@
 package com.practice.boardproject.post.controller;
 
+import com.practice.boardproject.global.page.Pagenation;
+import com.practice.boardproject.global.page.PagingButton;
 import com.practice.boardproject.post.dto.PostDTO;
 import com.practice.boardproject.post.dto.PostDetailDTO;
+import com.practice.boardproject.post.dto.PostsDTO;
 import com.practice.boardproject.post.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 
 @Slf4j
@@ -78,4 +85,18 @@ public class PostController {
         PostDetailDTO postDetail = postService.getPostDetail(postNo);
         return ResponseEntity.ok(postDetail);
     }
+
+    // 게시글 전체 조회 with 페이징
+    @GetMapping("/posts")
+    public ResponseEntity<PostsDTO> getAllPosts(@PageableDefault Pageable pageable) {
+
+        Page<PostDetailDTO> posts = postService.getAllPosts(pageable);
+        PagingButton paging = Pagenation.getPagingButtonInfo(posts);
+
+        PostsDTO pagingPosts = new PostsDTO(posts, paging);
+
+        return ResponseEntity.ok(pagingPosts);
+    }
+
+
 }

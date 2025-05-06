@@ -8,23 +8,29 @@ import com.practice.boardproject.post.dto.PostDetailDTO;
 import com.practice.boardproject.post.repository.PostRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-
 
 @Service
 public class PostService {
 
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
+    private final ModelMapper modelMapper;
 
 
     @Autowired
-    public PostService(PostRepository postRepository, MemberRepository memberRepository) {
+    public PostService(PostRepository postRepository, MemberRepository memberRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
         this.memberRepository = memberRepository;
+        this.modelMapper = modelMapper;
     }
 
     // 게시글 등록
@@ -82,5 +88,20 @@ public class PostService {
         LocalDateTime updatedAt = foundPost.getUpdatedAt();
 
         return new PostDetailDTO(title, content, authorName, createdAt, updatedAt);
+    }
+
+
+    // 게시글 전체 조회 with 페이징
+    public Page<PostDetailDTO> getAllPosts(Pageable pageable) {
+
+        pageable = PageRequest.of(
+                pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
+                pageable.getPageSize(),
+                Sort.by("createdAt").descending()
+                );
+
+        Page<Post> postList = postRepository.findAll(pageable);
+
+        return postList.map(post -> modelMapper.map(post, PostDetailDTO.class));
     }
 }
