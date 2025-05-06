@@ -1,5 +1,6 @@
 package com.practice.boardproject.global.exception;
 
+import com.practice.boardproject.post.domain.exception.NotFoundPostException;
 import com.practice.boardproject.post.domain.exception.NotFoundUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(NotFoundUserException.class)
-    public ResponseEntity<ErrorResponse> handleNotFoundUserException(NotFoundUserException e) {
+    @ExceptionHandler({NotFoundUserException.class, NotFoundPostException.class})
+    public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundUserException e) {
         return createErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 

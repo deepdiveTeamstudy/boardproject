@@ -5,6 +5,9 @@ import com.practice.boardproject.member.repository.MemberRepository;
 import com.practice.boardproject.post.domain.Post;
 import com.practice.boardproject.post.domain.dto.PostCreateRequest;
 import com.practice.boardproject.post.domain.dto.PostCreateResponse;
+import com.practice.boardproject.post.domain.dto.PostUpdateRequest;
+import com.practice.boardproject.post.domain.dto.PostUpdateResponse;
+import com.practice.boardproject.post.domain.exception.NotFoundPostException;
 import com.practice.boardproject.post.domain.exception.NotFoundUserException;
 import com.practice.boardproject.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +29,19 @@ public class PostService {
                 savedPost.getContent(),
                 author.getUsername(),
                 savedPost.getCreatedAt());
+    }
+
+    public PostUpdateResponse updatePost(PostUpdateRequest request) {
+        Post post = postRepository.findById(request.postId())
+                .orElseThrow(() -> new NotFoundPostException(request.postId()));
+
+        post.update(request.title(), request.content());
+        Post updatedPost = postRepository.save(post);
+        return new PostUpdateResponse(
+                updatedPost.getTitle(),
+                updatedPost.getContent(),
+                updatedPost.getAuthor().getUsername(),
+                updatedPost.getUpdatedAt()
+        );
     }
 }
