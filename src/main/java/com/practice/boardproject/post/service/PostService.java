@@ -81,13 +81,7 @@ public class PostService {
         Post foundPost = postRepository.findById((long) postNo)
                 .orElseThrow(() -> new EntityNotFoundException("게시글을 찾을 수 없습니다."));
 
-        String title = foundPost.getTitle();
-        String content = foundPost.getContent();
-        String authorName = foundPost.getAuthor().getUsername();
-        LocalDateTime createdAt = foundPost.getCreatedAt();
-        LocalDateTime updatedAt = foundPost.getUpdatedAt();
-
-        return new PostDetailDTO(title, content, authorName, createdAt, updatedAt);
+        return modelMapper.map(foundPost, PostDetailDTO.class);
     }
 
 
