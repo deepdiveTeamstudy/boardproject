@@ -20,7 +20,11 @@ public class PostService {
     public PostCreateResponse createPost(PostCreateRequest request) {
         Member author = memberRepository.findByUsername(request.username())
                 .orElseThrow(() -> new NotFoundUserException(request.username()));
-        Post post = Post.create(request.title(), request.content(), author);
-        return new PostCreateResponse(post.getTitle(), post.getContent(), author.getUsername(), post.getCreatedAt());
+        Post savedPost = Post.create(request.title(), request.content(), author);
+        return new PostCreateResponse(
+                savedPost.getTitle(),
+                savedPost.getContent(),
+                author.getUsername(),
+                savedPost.getCreatedAt());
     }
 }
