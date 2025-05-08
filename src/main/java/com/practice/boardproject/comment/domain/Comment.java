@@ -4,6 +4,7 @@ import com.practice.boardproject.member.domain.Member;
 import com.practice.boardproject.post.domain.Post;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,15 +14,19 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "comments")
+@Table
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,21 +44,18 @@ public class Comment {
     @JoinColumn(name = "author_id", nullable = false)
     private Member author;
 
-    @CreationTimestamp
+    @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
+    @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    @Builder
     private Comment(String content, Post post, Member author) {
         this.content = content;
         this.post = post;
         this.author = author;
-    }
-
-    public static Comment create(String content, Post post, Member author) {
-        return new Comment(content, post, author);
     }
 
     public void update(String content) {
