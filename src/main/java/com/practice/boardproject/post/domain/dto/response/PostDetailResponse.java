@@ -1,4 +1,4 @@
-package com.practice.boardproject.post.domain.dto;
+package com.practice.boardproject.post.domain.dto.response;
 
 import java.time.LocalDateTime;
 

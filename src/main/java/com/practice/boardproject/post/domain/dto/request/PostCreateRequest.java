@@ -1,10 +1,10 @@
-package com.practice.boardproject.post.domain.dto;
+package com.practice.boardproject.post.domain.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record PostUpdateRequest(
+public record PostCreateRequest(
         @NotBlank
-        Long postId,
+        String username,
 
         @NotBlank
         String title,
