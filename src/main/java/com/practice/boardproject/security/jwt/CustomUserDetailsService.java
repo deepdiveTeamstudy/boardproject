@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Member member = memberRepository.findById(Long.valueOf(username))
             .orElseThrow(() -> new GlobalException(ErrorCode.USER_NOT_FOUND));
         return new User(
-            member.getUsername(),
+            member.getId().toString(),
             member.getPassword(),
             Collections.emptyList()
         );

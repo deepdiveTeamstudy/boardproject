@@ -101,7 +101,6 @@ public class TokenProvider {
             .signWith(key)
             // 압축 = header + payload + signature
             .compact();
-        log.info("조립된 accessToken 확인 = {}", accessToken);
 
 
         return TokenDTO.builder()
