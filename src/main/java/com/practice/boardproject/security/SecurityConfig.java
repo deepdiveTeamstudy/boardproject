@@ -82,7 +82,7 @@ public class SecurityConfig {
                 // root 경로는 인증 필요
                 auth.requestMatchers("/").authenticated();
                 // 특정 경로는 무조건 허용
-                auth.requestMatchers("/signUp", "/login").permitAll();
+                auth.requestMatchers("/signup", "/login").permitAll();
                 // Swagger API 문서 허용
                 auth.requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
                 // API 경로는 USER 또는 ADMIN 역할을 가진 사용자만 접근 가능

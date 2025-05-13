@@ -28,8 +28,9 @@ public class MemberAuthServiceImpl implements MemberAuthService {
 
     @Override
     public SignUpResponse signUp(SignUpRequest signUpRequest) {
-        memberRepository.findByUsername(signUpRequest.username())
-                .orElseThrow(() -> new GlobalException(ErrorCode.DUPLICATE_USER));
+        if (memberRepository.existsByUsername(signUpRequest.username())) {
+            throw new GlobalException(ErrorCode.DUPLICATE_USER);
+        }
 
         Member member = Member.builder()
                 .username(signUpRequest.username())
