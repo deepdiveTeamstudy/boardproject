@@ -12,7 +12,10 @@ public enum ErrorCode {
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_NOT_FOUND", "존재하지 않는 사용자입니다."),
     
     // 게시글 관련 에러
-    POST_NOT_FOUND(HttpStatus.NOT_FOUND, "POST_NOT_FOUND", "존재하지 않는 게시글입니다.");
+    POST_NOT_FOUND(HttpStatus.NOT_FOUND, "POST_NOT_FOUND", "존재하지 않는 게시글입니다."),
+    
+    // 패스워드 불일치 에러
+    NOT_MATCH_PASSWORD(HttpStatus.UNAUTHORIZED, "NOT_MATCH_PASSWORD", "비밀번호가 일치하지 않습니다.");
 
     private final HttpStatus status;
     private final String code;
