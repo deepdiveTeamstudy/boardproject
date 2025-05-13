@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -33,7 +35,6 @@ public class SecurityConfig {
     // 접근 거부 관련 예외
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
-
     /* 목차. 1. 암호화 처리를 위한 PasswordEncoder를 빈으로 설정(빈을 등록 시 메소드 이름 오타 없도록 주의!) */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -47,6 +48,11 @@ public class SecurityConfig {
 //                .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
 //                .requestMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/productimgs/**");
 //    }
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 
     /* 목차. 3. HTTP요청에 대한 권한별 설정 (세션 인증 -> 토큰 인증으로 인해 바뀐 부분 존재) */
     @Bean
@@ -76,8 +82,7 @@ public class SecurityConfig {
                 // root 경로는 인증 필요
                 auth.requestMatchers("/").authenticated();
                 // 특정 경로는 무조건 허용
-                // todo 회원가입 및 로그인 API는 permitAll
-//                    auth.requestMatchers("/signUp", "/login").permitAll();
+                auth.requestMatchers("/signUp", "/login").permitAll();
                 // Swagger API 문서 허용
                 auth.requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
                 // API 경로는 USER 또는 ADMIN 역할을 가진 사용자만 접근 가능
