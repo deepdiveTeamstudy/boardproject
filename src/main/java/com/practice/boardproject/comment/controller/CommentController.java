@@ -2,7 +2,9 @@ package com.practice.boardproject.comment.controller;
 
 
 import com.practice.boardproject.comment.dto.request.CommentCreateRequest;
+import com.practice.boardproject.comment.dto.request.CommentUpdateRequest;
 import com.practice.boardproject.comment.dto.response.CommentCreateResponse;
+import com.practice.boardproject.comment.dto.response.CommentUpdateResponse;
 import com.practice.boardproject.comment.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,10 @@ public class CommentController {
         return ResponseEntity.ok(response);
     }
 
-
+    @PutMapping
+    public ResponseEntity<CommentUpdateResponse> updateComment(@Valid @RequestBody CommentUpdateRequest request){
+        CommentUpdateResponse response = commentService.updateComment(request);
+        return ResponseEntity.ok(response);
+    }
 
 }

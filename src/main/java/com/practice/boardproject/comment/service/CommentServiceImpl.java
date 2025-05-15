@@ -51,9 +51,24 @@ public class CommentServiceImpl implements CommentService {
         );
     }
 
-    @Override
-    public CommentUpdateResponse updateComment(CommentUpdateRequest commentUpdateRequest) {
-        return null;
+    public CommentUpdateResponse updateComment(CommentUpdateRequest request) {
+
+        String currentMemberName = SecurityUtils.getCurrentMemberName();
+
+        Comment comment = commentRepository.findById(request.commentId())
+                .orElseThrow(() -> new GlobalException(ErrorCode.COMMENT_NOT_FOUND));
+
+        if(!comment.getAuthor().getUsername().equals(currentMemberName)) {
+            throw new GlobalException(ErrorCode.UNAUTHORIZED_ACCESS);
+        }
+
+        comment.update(request.content());
+
+        return new CommentUpdateResponse(
+                comment.getContent(),
+                comment.getAuthor().getUsername(),
+                comment.getUpdatedAt()
+        );
     }
 
     @Override
