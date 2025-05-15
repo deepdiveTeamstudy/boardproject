@@ -71,8 +71,17 @@ public class CommentServiceImpl implements CommentService {
         );
     }
 
-    @Override
     public void deleteComment(Long commentId) {
 
+        String currentMemberName = SecurityUtils.getCurrentMemberName();
+
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new GlobalException(ErrorCode.COMMENT_NOT_FOUND));
+
+        if(!comment.getAuthor().getUsername().equals(currentMemberName)) {
+            throw new GlobalException(ErrorCode.UNAUTHORIZED_ACCESS);
+        }
+
+        commentRepository.deleteById(comment.getId());
     }
 }
