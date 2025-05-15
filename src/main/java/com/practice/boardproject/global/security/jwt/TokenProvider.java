@@ -46,7 +46,7 @@ public class TokenProvider {
         // JWT 토큰 생성
         String accessToken = Jwts.builder()
                 // 회원 아이디를 "sub"이라는 클레임으로 토큰에 추가
-                .setSubject(String.valueOf(member.getId()))
+                .setSubject(String.valueOf(member.getUsername())) // 이 부분 수정
                 // 회원의 권한을 "auth"라는 클레임으로 토큰에 추가
 //            .claim(AUTHORITIES_KEY, "ROLE_USER")
                 // 만료 시간 설정
