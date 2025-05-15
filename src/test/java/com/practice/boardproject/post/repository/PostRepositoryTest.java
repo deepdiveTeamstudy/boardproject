@@ -1,4 +1,4 @@
-package com.practice.boardproject.post.domain.repository;
+package com.practice.boardproject.post.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

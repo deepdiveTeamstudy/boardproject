@@ -1,4 +1,4 @@
-package com.practice.boardproject.security.jwt;
+package com.practice.boardproject.global.security.jwt;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,11 +16,12 @@ import org.springframework.stereotype.Component;
 public class JwtAccessDeniedHandler implements AccessDeniedHandler{
 
 	@Override
-	public void handle(HttpServletRequest request, HttpServletResponse response,
-					   AccessDeniedException accessDeniedException) throws IOException {
-		
+	public void handle(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			AccessDeniedException accessDeniedException
+	) throws IOException {
 		/* 설명. 유효한 자격증명을 제공하지 않고 접근 시 401 상태코드 발생 */
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 	}
-
 }

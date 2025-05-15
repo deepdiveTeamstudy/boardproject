@@ -1,4 +1,4 @@
-package com.practice.boardproject.post.domain.repository;
+package com.practice.boardproject.post.repository;
 
 import com.practice.boardproject.post.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;

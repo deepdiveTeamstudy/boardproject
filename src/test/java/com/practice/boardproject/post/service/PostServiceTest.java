@@ -1,4 +1,4 @@
-package com.practice.boardproject.post.domain.service;
+package com.practice.boardproject.post.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,13 +8,13 @@ import com.practice.boardproject.global.exception.GlobalException;
 import com.practice.boardproject.member.domain.Member;
 import com.practice.boardproject.member.repository.MemberRepository;
 import com.practice.boardproject.post.domain.Post;
-import com.practice.boardproject.post.domain.dto.request.PostCreateRequest;
-import com.practice.boardproject.post.domain.dto.request.PostUpdateRequest;
-import com.practice.boardproject.post.domain.dto.response.PostCreateResponse;
-import com.practice.boardproject.post.domain.dto.response.PostDetailResponse;
-import com.practice.boardproject.post.domain.dto.response.PostListResponse;
-import com.practice.boardproject.post.domain.dto.response.PostUpdateResponse;
-import com.practice.boardproject.post.domain.repository.PostRepository;
+import com.practice.boardproject.post.dto.request.PostCreateRequest;
+import com.practice.boardproject.post.dto.request.PostUpdateRequest;
+import com.practice.boardproject.post.dto.response.PostCreateResponse;
+import com.practice.boardproject.post.dto.response.PostDetailResponse;
+import com.practice.boardproject.post.dto.response.PostListResponse;
+import com.practice.boardproject.post.dto.response.PostUpdateResponse;
+import com.practice.boardproject.post.repository.PostRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

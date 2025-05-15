@@ -10,9 +10,4 @@ class BoardprojectApplicationTests {
     @Test
     void contextLoads() {
     }
-
-    @Bean(name = "jwt.secret")
-    public String jwtSecret() {
-        return "test-secret";
-    }
 }

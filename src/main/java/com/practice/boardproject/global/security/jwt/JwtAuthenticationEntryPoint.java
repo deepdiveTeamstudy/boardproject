@@ -1,4 +1,4 @@
-package com.practice.boardproject.security.jwt;
+package com.practice.boardproject.global.security.jwt;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,10 +25,12 @@ import org.springframework.stereotype.Component;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint{
 
 	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-						 AuthenticationException authException) throws IOException {
+	public void commence(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			AuthenticationException authException
+	) throws IOException {
 		/* 설명. 필요한 권한이 없을 시 403 상태코드 발생 */
 		response.sendError(HttpServletResponse.SC_FORBIDDEN);
 	}
-
 }

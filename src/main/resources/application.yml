@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PW}
+    url: jdbc:mysql://localhost:3306/board
+    username: root
+    password: rootpass
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -12,6 +12,6 @@ spring:
       hibernate:
         format_sql: true
 
-# 원래는 무조건 환경변수 처리해야 합니다!
+# 배포시 환경변수 처리!!
 jwt:
-  secret: Kimdoohyeon/Kimbogeun/Sinjimin/Leechanwon/Fighting/EscapeDeadbeat
+  secret: pczsXwXZ6392DaeaGpWvK2ERES7N6kpczsXwXZ6392DaeaGpWvK2ERES7N6k

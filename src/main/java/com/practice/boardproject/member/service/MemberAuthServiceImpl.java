@@ -9,7 +9,7 @@ import com.practice.boardproject.member.dto.response.SignUpResponse;
 import com.practice.boardproject.member.dto.response.TokenDTO;
 import com.practice.boardproject.member.repository.MemberRepository;
 import com.practice.boardproject.member.security.CustomUserDetails;
-import com.practice.boardproject.security.jwt.TokenProvider;
+import com.practice.boardproject.global.security.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

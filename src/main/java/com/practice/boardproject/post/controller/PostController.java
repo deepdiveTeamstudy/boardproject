@@ -1,12 +1,12 @@
-package com.practice.boardproject.post.domain.controller;
+package com.practice.boardproject.post.controller;
 
-import com.practice.boardproject.post.domain.dto.request.PostCreateRequest;
-import com.practice.boardproject.post.domain.dto.request.PostUpdateRequest;
-import com.practice.boardproject.post.domain.dto.response.PostCreateResponse;
-import com.practice.boardproject.post.domain.dto.response.PostDetailResponse;
-import com.practice.boardproject.post.domain.dto.response.PostListResponse;
-import com.practice.boardproject.post.domain.dto.response.PostUpdateResponse;
-import com.practice.boardproject.post.domain.service.PostService;
+import com.practice.boardproject.post.dto.request.PostCreateRequest;
+import com.practice.boardproject.post.dto.request.PostUpdateRequest;
+import com.practice.boardproject.post.dto.response.PostCreateResponse;
+import com.practice.boardproject.post.dto.response.PostDetailResponse;
+import com.practice.boardproject.post.dto.response.PostListResponse;
+import com.practice.boardproject.post.dto.response.PostUpdateResponse;
+import com.practice.boardproject.post.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
