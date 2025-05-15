@@ -194,4 +194,8 @@ public class TokenProvider {
             return e.getClaims();
         }
     }
+
+    public long getAccessTokenExpiresIn(String token) {
+        return parseClaims(token).getExpiration().getTime();
+    }
 }
