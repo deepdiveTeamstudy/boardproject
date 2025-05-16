@@ -1,0 +1,27 @@
+@access_token =eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJleHAiOjE3NDczODExMTh9.obLzXe8trjxAaGTFF3Gv16621NxWaRfhwHuUJOYJz8c
+
+### 댓글 등록 요청
+POST http://localhost:8080/api/comments
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "content": "댓글 내용",
+  "postId": 1
+}
+
+### 댓글 수정 요청
+PUT http://localhost:8080/api/comments
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+  "commentId": 1,
+  "content": "수정된 내용"
+}
+
+### 댓글 삭제 요청
+DELETE http://localhost:8080/api/comments/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
