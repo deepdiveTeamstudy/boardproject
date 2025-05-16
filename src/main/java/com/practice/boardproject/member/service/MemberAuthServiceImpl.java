@@ -11,12 +11,14 @@ import com.practice.boardproject.member.repository.MemberRepository;
 import com.practice.boardproject.member.security.CustomUserDetails;
 import com.practice.boardproject.global.security.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class MemberAuthServiceImpl implements MemberAuthService {
@@ -38,7 +40,7 @@ public class MemberAuthServiceImpl implements MemberAuthService {
                 .build();
 
         memberRepository.save(member);
-        return new SignUpResponse(member.getPassword());
+        return new SignUpResponse(member.getUsername());
     }
 
     @Override
