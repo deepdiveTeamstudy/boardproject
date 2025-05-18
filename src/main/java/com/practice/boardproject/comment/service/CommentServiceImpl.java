@@ -4,6 +4,7 @@ import com.practice.boardproject.comment.domain.Comment;
 import com.practice.boardproject.comment.dto.request.CommentCreateRequest;
 import com.practice.boardproject.comment.dto.request.CommentUpdateRequest;
 import com.practice.boardproject.comment.dto.response.CommentCreateResponse;
+import com.practice.boardproject.comment.dto.response.CommentListResponse;
 import com.practice.boardproject.comment.dto.response.CommentUpdateResponse;
 import com.practice.boardproject.comment.repository.CommentRepository;
 import com.practice.boardproject.global.exception.ErrorCode;
@@ -14,8 +15,13 @@ import com.practice.boardproject.member.repository.MemberRepository;
 import com.practice.boardproject.post.domain.Post;
 import com.practice.boardproject.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Service
 @RequiredArgsConstructor
@@ -83,5 +89,13 @@ public class CommentServiceImpl implements CommentService {
         }
 
         commentRepository.deleteById(comment.getId());
+    }
+
+    @Transactional(readOnly = true)
+    public CommentListResponse getPostComments(Long postId) {
+
+        List<Comment> comments = commentRepository.findByPostId(postId, Sort.by(DESC, "createdAt"));
+
+        return CommentListResponse.from(comments);
     }
 }

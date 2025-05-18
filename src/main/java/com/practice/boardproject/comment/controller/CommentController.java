@@ -4,6 +4,7 @@ package com.practice.boardproject.comment.controller;
 import com.practice.boardproject.comment.dto.request.CommentCreateRequest;
 import com.practice.boardproject.comment.dto.request.CommentUpdateRequest;
 import com.practice.boardproject.comment.dto.response.CommentCreateResponse;
+import com.practice.boardproject.comment.dto.response.CommentListResponse;
 import com.practice.boardproject.comment.dto.response.CommentUpdateResponse;
 import com.practice.boardproject.comment.service.CommentService;
 import jakarta.validation.Valid;
@@ -34,6 +35,12 @@ public class CommentController {
     public ResponseEntity<Void> deleteComment(@PathVariable Long commentId){
         commentService.deleteComment(commentId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<CommentListResponse> getAllComment(@PathVariable Long postId) {
+        CommentListResponse response = commentService.getPostComments(postId);
+        return ResponseEntity.ok(response);
     }
 
 }

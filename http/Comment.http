@@ -1,4 +1,4 @@
-@access_token =eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJleHAiOjE3NDczODExMTh9.obLzXe8trjxAaGTFF3Gv16621NxWaRfhwHuUJOYJz8c
+@access_token =
 
 ### 댓글 등록 요청
 POST http://localhost:8080/api/comments
@@ -25,3 +25,7 @@ DELETE http://localhost:8080/api/comments/1
 Content-Type: application/json
 Authorization: Bearer {{access_token}}
 
+### 게시글별 댓글 조회
+GET http://localhost:8080/api/comments/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
