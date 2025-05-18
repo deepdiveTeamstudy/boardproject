@@ -4,6 +4,7 @@ import com.practice.boardproject.comment.domain.Comment;
 import com.practice.boardproject.comment.dto.request.CommentCreateRequest;
 import com.practice.boardproject.comment.dto.request.CommentUpdateRequest;
 import com.practice.boardproject.comment.dto.response.CommentCreateResponse;
+import com.practice.boardproject.comment.dto.response.CommentListResponse;
 import com.practice.boardproject.comment.dto.response.CommentUpdateResponse;
 import com.practice.boardproject.comment.repository.CommentRepository;
 import com.practice.boardproject.global.exception.ErrorCode;
@@ -39,6 +40,8 @@ class CommentServiceTest {
     @Autowired
     private MemberRepository memberRepository;
 
+    private Member testMember;
+
     private Post testPost;
 
     private Comment testComment;
@@ -46,7 +49,7 @@ class CommentServiceTest {
     @BeforeEach
     void setUp() {
         // 테스트 멤버 저장
-        Member testMember = Member.builder()
+        testMember = Member.builder()
                 .username("test01")
                 .password("1234")
                 .build();
@@ -192,4 +195,25 @@ class CommentServiceTest {
         //then
         assertThat(exception.getErrorCode()).isEqualTo(ErrorCode.UNAUTHORIZED_ACCESS);
     }
+
+    @DisplayName("게시글 별 댓글 조회 성공")
+    @Test
+    void getCommentsByPostIdSuccess() {
+
+        //given
+        Comment anotherComment = Comment.builder()
+                .post(testPost)
+                .content("another-comment")
+                .author(testMember)
+                .build();
+        commentRepository.save(anotherComment);
+
+        //when
+        CommentListResponse response = commentService.getPostComments(testPost.getId());
+
+        //then
+        assertThat(response.comments()).hasSize(2);
+        assertThat(response.size()).isEqualTo(2);
+    }
+
 }
