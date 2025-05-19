@@ -90,7 +90,7 @@ class CommentServiceTest {
         CommentCreateResponse response = commentService.createComment(request);
 
         //then
-        assertThat(response.comment()).isEqualTo("new-comment");
+        assertThat(response.content()).isEqualTo("new-comment");
         assertThat(response.author()).isEqualTo("test01");
     }
 
