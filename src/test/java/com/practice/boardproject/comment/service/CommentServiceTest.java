@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @WithMockUser(username = "test01") // test01 사용자로 인증
 class CommentServiceTest {
 
-    @Autowired // 왜 여기서는 @RequiredArgsConstructor 안쓰는거지?
+    @Autowired
     private CommentService commentService;
 
     @Autowired
