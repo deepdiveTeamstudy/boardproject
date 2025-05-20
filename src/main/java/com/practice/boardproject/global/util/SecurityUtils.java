@@ -14,9 +14,14 @@ public class SecurityUtils {
         return authentication;
     }
 
-    public static Long getCurrentMemberId() {
+//    public static Long getCurrentMemberId() {
+//        Authentication authentication = getAuthentication();
+//        return Long.valueOf(authentication.getName());
+//    }
+
+    public static String getCurrentMemberName() {
         Authentication authentication = getAuthentication();
-        return Long.valueOf(authentication.getName());
+        return authentication.getName();
     }
 
 }

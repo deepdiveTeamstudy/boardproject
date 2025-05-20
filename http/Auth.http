@@ -1,0 +1,17 @@
+### 회원가입 요청
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{
+  "username": "test01",
+  "password": "1234"
+}
+
+### 로그인 요청
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "test01",
+  "password": "1234"
+}

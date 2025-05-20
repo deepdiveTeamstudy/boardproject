@@ -1,11 +1,14 @@
-###
+@access_token =eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MDEiLCJleHAiOjE3NDczODExMTh9.obLzXe8trjxAaGTFF3Gv16621NxWaRfhwHuUJOYJz8c
+
+### 게시글 등록 요청
 POST http://localhost:8080/api/posts/new
 Content-Type: application/json
+Authorization: Bearer {{access_token}}
 
 {
-  "username": "test",
-  "title": "test2",
-  "content": "content"
+  "username": "test01",
+  "title": "testTitle",
+  "content": "testContent"
 }
 
 ###
